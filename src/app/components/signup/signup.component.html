@@ -8,47 +8,60 @@
       <div class="alert-danger" *ngIf="errorMessage">
         <span>{{ errorMessage }}</span>
       </div>
-      <form class="col s12" [formGroup]="signupForm" novalidate (ngSubmit)="register()">
+      <form class="col s12" #signupForm="ngForm">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" formControlName="username" #username>
             <label for="username">Username</label>
-            <span class="error" *ngIf="!signupForm.controls['username'].valid && signupForm.controls['username'].touched">
-              Username is required
-            </span>
+            <input type="text" name="username" [(ngModel)]="formData.username" #username="ngModel" required>
+            <div *ngIf="username.invalid && (username.dirty || username.touched)">
+              <span class="error" *ngIf="username.errors['required']">
+                Username is required.
+              </span>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="email" formControlName="email" #email>
-            <label for="email">Email</label>
-            <span class="error" *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
-              Email is required
-            </span>
+            <label for="email">email</label>
+            <input type="text" name="email" id="email" [(ngModel)]="formData.email" #email="ngModel" required>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <span class="error" *ngIf="email.errors['required']">
+                Email is required.
+              </span>
+              <span class="error" *ngIf="email.errors['email']">
+                Invalid Email format.
+              </span>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="password" formControlName="password" #password>
             <label for="password">Password</label>
-            <span class="error" *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
-              Password is required
-            </span>
+            <input type="password" class="form-control" name="password" [(ngModel)]="formData.password" #password="ngModel"
+              required>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)">
+              <span class="error" *ngIf="password.errors['required']">
+                Password is required.
+              </span>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input type="password" #passwordConfirm>
             <label for="passwordConfirm">Confirm Password</label>
-            <span class="error" *ngIf="!signupForm.controls['passwordConfirm'].valid && signupForm.controls['passwordConfirm'].touched">
-              Confirmation is required
-            </span>
-            <span class="error" *ngIf="password.value !== passwordConfirm.value">
-              Password and Confirmation do not match
+            <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="formData.passwordConfirm"
+              #passwordConfirm="ngModel" required>
+            <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)">
+              <span class="error" *ngIf="passwordConfirm.errors['required']">
+                Confirmation is required.
+              </span>
+            </div>
+            <span class="error" *ngIf="password.value !== passwordConfirm">
+              Password and confirmation do not match.
             </span>
           </div>
         </div>
-        <button class="btn waves-effect" id="signupbtn" [disabled]="!signupForm.valid">
+        <button class="btn waves-effect" id="signupbtn" [disabled]="!signupForm.form.valid" (click)="register()" type="submit">
           Sign Up
         </button>
       </form>

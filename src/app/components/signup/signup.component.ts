@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -10,30 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  signupForm: FormGroup;
+  formData: any = {};
   errorMessage: string;
   showSpinner = false;
 
   ngOnInit() {
-    this.init();
-  }
-
-  init() {
-    this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', Validators.required]
-    });
+    this.formData = {};
+    this.errorMessage = '';
   }
 
   register() {
     this.showSpinner = true;
-    this.authService.register(this.signupForm.value).subscribe(
+    this.authService.register(this.formData).subscribe(
       data => {
         console.log(data);
-        this.signupForm.reset();
+        this.formData = {};
         this.router.navigate(['streams']);
         this.showSpinner = false;
       },
