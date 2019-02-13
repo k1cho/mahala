@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
   errorMessage: string;
+  showSpinner = false;
 
   ngOnInit() {
     this.init();
@@ -28,11 +29,13 @@ export class SignupComponent implements OnInit {
   }
 
   register() {
+    this.showSpinner = true;
     this.authService.register(this.signupForm.value).subscribe(
       data => {
         console.log(data);
         this.signupForm.reset();
         this.router.navigate(['streams']);
+        this.showSpinner = false;
       },
       (err: HttpErrorResponse) => {
         if (err.error.msg) {
@@ -42,6 +45,7 @@ export class SignupComponent implements OnInit {
         if (err.error.message) {
           this.errorMessage = err.error.message;
         }
+        this.showSpinner = false;
       }
     );
   }
