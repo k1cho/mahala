@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private tokenService: TokenService) {}
 
   formData: any = {};
   errorMessage: string;
@@ -24,7 +25,7 @@ export class SignupComponent implements OnInit {
     this.showSpinner = true;
     this.authService.register(this.formData).subscribe(
       data => {
-        console.log(data);
+        this.tokenService.setToken(data.token);
         this.formData = {};
         this.router.navigate(['streams']);
         this.showSpinner = false;
