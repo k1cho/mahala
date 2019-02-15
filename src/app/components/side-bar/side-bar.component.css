@@ -1,0 +1,23 @@
+.collection-item,
+.collection-header {
+  background-color: #252A33 !important;
+  border-color: #252A33 !important;
+  padding: 10px 20px;
+}
+
+.collection {
+  border-radius: 3px !important;
+  border-color: #252A33 !important;
+}
+
+a {
+  color: lightslategray !important;
+}
+
+.active a {
+  color: antiquewhite !important;
+}
+
+.active {
+  background-color: #64b5f6;
+}
