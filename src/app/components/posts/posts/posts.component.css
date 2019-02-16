@@ -1,0 +1,64 @@
+.collection-item {
+  background-color: #252A33 !important;
+  border: none !important;
+}
+
+.liked {
+  color: #64b5f6 !important;
+}
+
+.title {
+  font-weight: bold;
+  color: #64b5f6;
+}
+
+.time {
+  font-size: 14px;
+  color: #666565;
+}
+
+#iconSpan {
+  font-size: 18px;
+  line-height: 18px;
+  margin-right: 5px;
+}
+
+.material-icons {
+  display: inline-flex;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.postImage {
+  width: 100% !important;
+  margin: 0 auto !important;
+  left: 20px;
+  top: 10px;
+}
+
+.card-image {
+  width: 200px;
+  height: auto !important;
+}
+
+.collection {
+  border: none !important;
+  margin-right: 106px;
+  margin-left: -10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+a {
+  color: lightslategray !important;
+}
+
+.active a {
+  color: antiquewhite !important;
+}
+
+.active {
+  width: 350px !important;
+  height: 350px !important;
+  border-radius: none !important;
+  margin: -150px 0px 0px 120px !important;
+}
