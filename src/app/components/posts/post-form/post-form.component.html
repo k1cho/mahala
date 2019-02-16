@@ -11,7 +11,7 @@
           </div>
           <div class="col s6">
             <div class="file-field input-field">
-              <div class="btn">
+              <div class="btn waves-effect waves-light">
                 <span><i class="material-icons">image</i>Image</span>
                 <input type="file" name="image" [(ngModel)]="formData.image" #image="ngModel">
               </div>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="col s6">
-            <button class="btn waves postBtn" [disabled]="!postForm.form.valid" (click)="createPost()">Post</button>
+            <button class="btn waves-effect waves-light postBtn" [disabled]="!postForm.form.valid" (click)="createPost()">Post</button>
           </div>
         </div>
       </form>

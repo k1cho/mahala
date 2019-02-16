@@ -10,6 +10,7 @@ body {
 
 .dark {
   background-color: #252A33 !important;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 input:not([type]),
@@ -47,4 +48,28 @@ textarea.materialize-textarea {
   margin: .5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #343B47;
+}
+
+.btn,
+.btn-large,
+.btn-small {
+  text-decoration: none;
+  color: #fff;
+  background-color: #802392 !important;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+  background-color: #823A91 !important;
+}
+
+.col .row {
+  margin-left: -.75rem;
+  margin-right: -.75rem;
+  margin-top: 8px !important;
 }
