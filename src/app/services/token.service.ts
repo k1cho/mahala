@@ -8,14 +8,14 @@ export class TokenService {
   constructor(private cookieService: CookieService) {}
 
   setToken(token) {
-    this.cookieService.set('token', token);
+    this.cookieService.set('auth', token);
   }
 
   getToken() {
-    return this.cookieService.get('token');
+    return this.cookieService.get('auth');
   }
 
   deleteToken() {
-    this.cookieService.delete('token');
+    this.cookieService.delete('auth');
   }
 }

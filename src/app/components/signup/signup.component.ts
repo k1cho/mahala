@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
     this.showSpinner = true;
     this.authService.register(this.formData).subscribe(
       data => {
+        console.log(data);
         this.tokenService.setToken(data.token);
         this.formData = {};
         this.router.navigate(['streams']);
