@@ -2,7 +2,7 @@
   <li class="collection-item avatar">
     <img src="http:://placehold.it/50x50" alt="" class="circle">
     <span class="title">{{post.user.username}}</span>
-    <p class="time">{{post.createdAt}}<br>
+    <p class="time">{{ timeFromNow(post.createdAt) }}<br>
       Second Line
     </p>
   </li>
