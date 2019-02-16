@@ -19,8 +19,8 @@ export class PostFormComponent implements OnInit {
 
   createPost() {
     this.postService.store(this.formData).subscribe(
-      post => {
-        console.log(post);
+      () => {
+        this.formData = {};
       },
       (err: HttpErrorResponse) => {
         console.log(err);
