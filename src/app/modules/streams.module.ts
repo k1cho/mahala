@@ -8,10 +8,13 @@ import { PostFormComponent } from '../components/posts/post-form/post-form.compo
 import { PostsComponent } from '../components/posts/posts/posts.component';
 import { PostService } from '../services/post.service';
 import { FormsModule } from '@angular/forms';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
   declarations: [StreamsComponent, ToolbarComponent, SideBarComponent, PostFormComponent, PostsComponent],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config)],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService]
 })

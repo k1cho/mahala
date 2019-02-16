@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import * as moment from 'moment';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-posts',
@@ -9,10 +10,13 @@ import * as moment from 'moment';
 })
 export class PostsComponent implements OnInit {
   posts: any = [];
-  constructor(private postsService: PostService) {}
+  constructor(private postsService: PostService, private socket: Socket) {}
 
   ngOnInit() {
     this.getPosts();
+    this.socket.on('refreshPage', () => {
+      this.getPosts();
+    });
   }
 
   getPosts() {
