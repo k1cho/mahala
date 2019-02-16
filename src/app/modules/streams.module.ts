@@ -6,11 +6,13 @@ import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { SideBarComponent } from '../components/side-bar/side-bar.component';
 import { PostFormComponent } from '../components/posts/post-form/post-form.component';
 import { PostsComponent } from '../components/posts/posts/posts.component';
+import { PostService } from '../services/post.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [StreamsComponent, ToolbarComponent, SideBarComponent, PostFormComponent, PostsComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [StreamsComponent, ToolbarComponent],
-  providers: [TokenService]
+  providers: [TokenService, PostService]
 })
 export class StreamsModule {}

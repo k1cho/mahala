@@ -16,6 +16,7 @@ form {
 
 .postBtn {
   float: right;
+  margin-top: 15px;
   margin-bottom: 5px;
 }
 
@@ -24,6 +25,5 @@ form {
 }
 
 .row {
-  padding-top: 92px !important;
-  padding-left: 50px !important;
+  padding-top: 94px !important;
 }
