@@ -13,4 +13,8 @@ export class PostService {
   store(body: any): Observable<any> {
     return this.http.post(baseUrl + '/posts/store', body);
   }
+
+  getAll(): Observable<any> {
+    return this.http.get(baseUrl + '/posts');
+  }
 }
