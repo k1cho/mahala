@@ -9,11 +9,12 @@ import { PostsComponent } from '../components/posts/posts/posts.component';
 import { PostService } from '../services/post.service';
 import { FormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { CommentListComponent } from '../components/comments/comment-list/comment-list.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideBarComponent, PostFormComponent, PostsComponent],
+  declarations: [StreamsComponent, ToolbarComponent, SideBarComponent, PostFormComponent, PostsComponent, CommentListComponent],
   imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config)],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService]

@@ -1,4 +1,4 @@
-<ul class="collection s12 dark" *ngFor="let post of posts">
+<ul class="collection col s12 m12 l10 dark" *ngFor="let post of posts">
   <li class="collection-item avatar">
     <img src="http:://placehold.it/50x50" alt="" class="circle">
     <span class="title">{{post.user.username}}</span>
@@ -17,10 +17,10 @@
           <p>{{ post.post }}</p>
         </div>
         <div class="card-action">
-          <i (click)="likePost(post)" class="material-icons">thumb_up</i>
+          <i (click)="likePost(post)" [ngClass]="{'liked': (checkIfUserLikedPost(post.likes, user._id))}" class="material-icons">thumb_up</i>
           <span class="iconSpan">{{ post.totalLikes }}</span>
 
-          <i class="material-icons">chat</i>
+          <i class="material-icons" (click)="openCommentBox(post)">chat</i>
           <span class="iconSpan">{{ post.comments.length }}</span>
         </div>
       </div>

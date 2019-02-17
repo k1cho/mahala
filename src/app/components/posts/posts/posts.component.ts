@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import * as moment from 'moment';
 import { Socket } from 'ngx-socket-io';
+import _ from 'lodash';
+import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -10,9 +13,17 @@ import { Socket } from 'ngx-socket-io';
 })
 export class PostsComponent implements OnInit {
   posts: any = [];
-  constructor(private postsService: PostService, private socket: Socket) {}
+  user: any;
+
+  constructor(
+    private postsService: PostService,
+    private socket: Socket,
+    private token: TokenService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.user = this.token.getPayload();
     this.getPosts();
     this.socket.on('refreshPage', () => {
       this.getPosts();
@@ -28,14 +39,21 @@ export class PostsComponent implements OnInit {
   likePost(post) {
     this.postsService.like(post).subscribe(
       data => {
-        console.log(data);
         this.socket.emit('refresh', {});
       },
       err => console.log(err)
     );
   }
 
+  checkIfUserLikedPost(array, id) {
+    return _.some(array, { user: id });
+  }
+
   timeFromNow(time) {
     return moment(time).fromNow();
+  }
+
+  openCommentBox(post) {
+    this.router.navigate(['post', post._id]);
   }
 }
