@@ -25,6 +25,16 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  likePost(post) {
+    this.postsService.like(post).subscribe(
+      data => {
+        console.log(data);
+        this.socket.emit('refresh', {});
+      },
+      err => console.log(err)
+    );
+  }
+
   timeFromNow(time) {
     return moment(time).fromNow();
   }

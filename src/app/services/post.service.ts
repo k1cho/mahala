@@ -17,4 +17,8 @@ export class PostService {
   getAll(): Observable<any> {
     return this.http.get(baseUrl + '/posts');
   }
+
+  like(post): Observable<any> {
+    return this.http.post(baseUrl + '/posts/like', post);
+  }
 }
