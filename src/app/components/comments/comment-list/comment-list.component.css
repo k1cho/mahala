@@ -1,0 +1,21 @@
+.commentDiv {
+  background-color: #252A33;
+}
+
+form {
+  background-color: #252A33;
+}
+
+.formDiv {
+  margin: 25px 20px 0px 20px;
+}
+
+.commentBtn {
+  float: right;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.file-field input[type="file"] {
+  width: 70% !important;
+}
