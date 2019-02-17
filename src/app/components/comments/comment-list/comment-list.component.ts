@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommentService } from 'src/app/services/comment.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-comment-list',
@@ -8,11 +10,15 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class CommentListComponent implements OnInit, AfterViewInit {
   toolbarElement: any;
   formData: any;
-  constructor() {}
+  comments: any = [];
+  postId: any;
+
+  constructor(private commentService: CommentService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.toolbarElement = document.querySelector('.nav-content');
     this.formData = {};
+    this.postId = this.route.snapshot.paramMap.get('id');
   }
 
   ngAfterViewInit() {
@@ -21,5 +27,8 @@ export class CommentListComponent implements OnInit, AfterViewInit {
 
   createComment() {
     console.log(this.formData);
+    this.commentService.post(this.postId, this.formData).subscribe(comment => {
+      this.comments = comment;
+    });
   }
 }
