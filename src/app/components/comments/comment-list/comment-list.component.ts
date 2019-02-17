@@ -27,7 +27,7 @@ export class CommentListComponent implements OnInit, AfterViewInit {
 
   createComment() {
     console.log(this.formData);
-    this.commentService.post(this.postId, this.formData).subscribe(comment => {
+    this.commentService.store(this.postId, this.formData).subscribe(comment => {
       this.comments = comment;
     });
   }

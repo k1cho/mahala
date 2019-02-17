@@ -12,7 +12,7 @@ const baseUrl = 'http://localhost:3001/api/mahala';
 export class CommentService {
   constructor(private http: HttpClient) {}
 
-  post(post, comment): Observable<any> {
+  store(post, comment): Observable<any> {
     return this.http.post(baseUrl + '/comments/store', { post, comment });
   }
 }
