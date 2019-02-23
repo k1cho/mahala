@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommentService } from 'src/app/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
+import { Socket } from 'ngx-socket-io';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-comment-list',
@@ -17,7 +19,8 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   constructor(
     private commentService: CommentService,
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private socket: Socket
   ) {}
 
   ngOnInit() {
@@ -25,6 +28,9 @@ export class CommentListComponent implements OnInit, AfterViewInit {
     this.formData = {};
     this.postId = this.route.snapshot.paramMap.get('id');
     this.getPost();
+    this.socket.on('refreshPage', () => {
+      this.getPost();
+    });
   }
 
   ngAfterViewInit() {
@@ -32,16 +38,25 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   }
 
   createComment() {
-    this.commentService.store(this.postId, this.formData).subscribe(comment => {
-      this.comments = comment;
-      this.formData = {};
-    });
+    this.commentService.store(this.postId, this.formData).subscribe(
+      () => {
+        this.socket.emit('refresh', {});
+        this.formData = {};
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
   }
 
   getPost() {
-    this.postService.get(this.postId).subscribe(post => {
-      console.log(post.comments);
-      this.comments = post.comments;
-    });
+    this.postService.get(this.postId).subscribe(
+      post => {
+        this.comments = post.comments.reverse();
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    );
   }
 }
