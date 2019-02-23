@@ -20,7 +20,7 @@
           <i (click)="likePost(post)" [ngClass]="{'liked': (checkIfUserLikedPost(post.likes, user._id))}" class="material-icons">thumb_up</i>
           <span class="iconSpan">{{ post.totalLikes }}</span>
 
-          <i class="material-icons" (click)="openCommentBox(post)">chat</i>
+          <i class="material-icons" [ngClass]="{'liked': (checkIfUserCommented(post.comments, user._id))}" (click)="openCommentBox(post)">chat</i>
           <span class="iconSpan">{{ post.comments.length }}</span>
         </div>
       </div>

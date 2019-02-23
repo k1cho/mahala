@@ -49,6 +49,10 @@ export class PostsComponent implements OnInit {
     return _.some(array, { user: id });
   }
 
+  checkIfUserCommented(array, id) {
+    return _.some(array, { user: id });
+  }
+
   timeFromNow(time) {
     return moment(time).fromNow();
   }
