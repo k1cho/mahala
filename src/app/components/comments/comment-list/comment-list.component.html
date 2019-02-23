@@ -11,7 +11,7 @@
           <form #commentForm="ngForm">
             <div class="formDiv">
               <textarea id="textarea1" class="materialize-textarea" name="comment" [(ngModel)]="formData.comment"
-                #comment="ngModel"></textarea>
+                #comment="ngModel" required></textarea>
               <div *ngIf="comment.invalid && (comment.dirty || comment.touched)">
                 <span class="error" *ngIf="comment.errors['required']">
                   Comment is required.
