@@ -25,6 +25,16 @@
           </form>
         </div>
       </div>
+      <ul class="collection col s12 m12 l10 dark" *ngFor="let comment of comments">
+        <li class="collection-item avatar">
+          <img class="circle" src="http://placehold.it/100x100" alt="">
+          <span class="title">
+            {{ comment.user.username }}
+          </span>
+          <p class="time">{{ comment.createdAt }}</p>
+          <p class="comment"> {{ comment.comment }}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

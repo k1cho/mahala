@@ -14,6 +14,10 @@ export class PostService {
     return this.http.post(baseUrl + '/posts/store', body);
   }
 
+  get(id: any): Observable<any> {
+    return this.http.get(baseUrl + '/posts/' + id);
+  }
+
   getAll(): Observable<any> {
     return this.http.get(baseUrl + '/posts');
   }
