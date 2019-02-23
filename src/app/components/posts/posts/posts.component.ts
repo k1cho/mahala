@@ -18,12 +18,12 @@ export class PostsComponent implements OnInit {
   constructor(
     private postsService: PostService,
     private socket: Socket,
-    private token: TokenService,
+    private tokenService: TokenService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.user = this.token.getPayload();
+    this.user = this.tokenService.getPayload();
     this.getPosts();
     this.socket.on('refreshPage', () => {
       this.getPosts();
@@ -31,9 +31,17 @@ export class PostsComponent implements OnInit {
   }
 
   getPosts() {
-    this.postsService.getAll().subscribe(data => {
-      this.posts = data;
-    });
+    this.postsService.getAll().subscribe(
+      data => {
+        this.posts = data;
+      },
+      err => {
+        if (err.error.token === null) {
+          this.tokenService.deleteToken();
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 
   likePost(post) {

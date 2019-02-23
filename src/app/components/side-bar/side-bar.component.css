@@ -16,9 +16,15 @@ a {
 }
 
 .active a {
-  color: antiquewhite !important;
+  color: #64b5f6 !important;
+  font-weight: bolder;
 }
 
 .active {
-  background-color: #64b5f6;
+  color: #64b5f6;
+  font-weight: bolder;
+}
+
+.bold {
+  font-weight: bolder;
 }
