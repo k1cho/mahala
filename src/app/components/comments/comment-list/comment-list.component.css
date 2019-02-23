@@ -32,3 +32,8 @@ form {
   background-color: #252A33 !important;
   border: none !important;
 }
+
+.post-title {
+  position: relative !important;
+  margin: 15px 15px 15px 15px !important;
+}

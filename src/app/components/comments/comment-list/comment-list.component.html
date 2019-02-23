@@ -6,6 +6,11 @@
       <app-side-bar></app-side-bar>
     </div>
     <div class="col s12 m8 l8">
+      <div class="col s12 m12 l10 dark">
+        <p class="post-title">
+          {{ post }}
+        </p>
+      </div>
       <div class="row col s12 m12 l10 dark">
         <div class="commentsDiv">
           <form #commentForm="ngForm">
@@ -31,7 +36,7 @@
           <span class="title">
             {{ comment.user.username }}
           </span>
-          <p class="time">{{ comment.createdAt }}</p>
+          <p class="time">{{ timeFromNow(comment.createdAt) }}</p>
           <p class="comment"> {{ comment.comment }}</p>
         </li>
       </ul>

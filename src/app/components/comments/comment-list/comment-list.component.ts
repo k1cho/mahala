@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { Socket } from 'ngx-socket-io';
 import { HttpErrorResponse } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-comment-list',
@@ -14,6 +15,7 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   toolbarElement: any;
   formData: any;
   comments: any = [];
+  post: any;
   postId: any;
 
   constructor(
@@ -52,11 +54,17 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   getPost() {
     this.postService.get(this.postId).subscribe(
       post => {
+        this.post = post.post;
+        console.log(this.post);
         this.comments = post.comments.reverse();
       },
       (err: HttpErrorResponse) => {
         console.log(err);
       }
     );
+  }
+
+  timeFromNow(time) {
+    return moment(time).fromNow();
   }
 }
