@@ -13,6 +13,7 @@ import { CommentListComponent } from '../components/comments/comment-list/commen
 import { CommentService } from '../services/comment.service';
 import { RouterModule } from '@angular/router';
 import { PeopleListComponent } from '../components/people/people-list/people-list.component';
+import { UsersService } from '../services/users.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -28,6 +29,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
   ],
   imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule],
   exports: [StreamsComponent, ToolbarComponent],
-  providers: [TokenService, PostService, CommentService]
+  providers: [TokenService, PostService, CommentService, UsersService]
 })
 export class StreamsModule {}
