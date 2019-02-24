@@ -17,28 +17,41 @@
         </a>
       </div>
     </li>
-    <li class="collection-item">
-      <div>Notifications<a href="#!" class="secondary-content"><i class="material-icons">alarm</i></a></div>
+    <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+      <a href="">
+        <div>Notifications<a href="#!" class="secondary-content"><i class="material-icons">alarm</i></a></div>
+      </a>
     </li>
     <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-      <a [routerLink]="['/streams']" routerLinkActive="router-link-active">
+      <a [routerLink]="['/streams']">
         <div>Feed
           <a href="#!" class="secondary-content"><i class="material-icons">announcement</i>
           </a>
         </div>
       </a>
     </li>
-    <li class="collection-item">
-      <div>People<a href="#!" class="secondary-content"><i class="material-icons">people</i></a></div>
+    <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+      <a [routerLink]="['/people']">
+        <div>People
+          <a href="#!" class="secondary-content"><i class="material-icons">people</i>
+          </a>
+        </div>
+      </a>
     </li>
-    <li class="collection-item">
-      <div>Followers<a href="#!" class="secondary-content"><i class="material-icons">people_outline</i></a></div>
+    <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+      <a href="">
+        <div>Followers<a href="#!" class="secondary-content"><i class="material-icons">people_outline</i></a></div>
+      </a>
     </li>
-    <li class="collection-item">
-      <div>Following<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
+    <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+      <a href="">
+        <div>Following<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
+      </a>
     </li>
-    <li class="collection-item">
-      <div>Photos<a href="#!" class="secondary-content"><i class="material-icons">photo_library</i></a></div>
+    <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+      <a href="">
+        <div>Photos<a href="#!" class="secondary-content"><i class="material-icons">photo_library</i></a></div>
+      </a>
     </li>
   </ul>
 </div>

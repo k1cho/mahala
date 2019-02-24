@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StreamsComponent } from '../components/streams/streams.component';
 import { AuthGuard } from '../services/auth.guard';
 import { CommentListComponent } from '../components/comments/comment-list/comment-list.component';
+import { PeopleListComponent } from '../components/people/people-list/people-list.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'post/:id',
     component: CommentListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'people',
+    component: PeopleListComponent,
     canActivate: [AuthGuard]
   }
 ];
