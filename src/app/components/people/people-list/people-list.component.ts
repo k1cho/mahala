@@ -15,8 +15,9 @@ export class PeopleListComponent implements OnInit {
   constructor(private usersService: UsersService, private tokenService: TokenService) {}
 
   ngOnInit() {
-    this.getUsers();
     this.loggedUser = this.tokenService.getPayload();
+    this.getUsers();
+    this.getUser();
   }
 
   getUsers() {
@@ -35,5 +36,11 @@ export class PeopleListComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  getUser() {
+    this.usersService.show(this.loggedUser._id).subscribe(user => {
+      console.log(user);
+    });
   }
 }

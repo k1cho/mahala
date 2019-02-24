@@ -17,4 +17,8 @@ export class UsersService {
   follow(userId): Observable<any> {
     return this.http.post(baseUrl + '/follows/follow', { userId });
   }
+
+  show(id): Observable<any> {
+    return this.http.get(baseUrl + '/users/' + id);
+  }
 }
