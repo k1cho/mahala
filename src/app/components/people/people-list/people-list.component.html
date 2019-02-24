@@ -17,7 +17,7 @@
             {{ user.username }}
           </h6>
           <p>Country</p>
-          <button class="btn waves-effect waves-light">Follow</button>
+          <button class="btn waves-effect waves-light" (click)="follow(user._id)">Follow</button>
           <a class="secondary-content" href="">
             <i class="material-icons">chat</i>
           </a>

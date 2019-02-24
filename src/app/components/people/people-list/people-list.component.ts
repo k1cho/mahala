@@ -25,4 +25,15 @@ export class PeopleListComponent implements OnInit {
       this.users = users;
     });
   }
+
+  follow(id) {
+    this.usersService.follow(id).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }
