@@ -30,7 +30,6 @@ export class PeopleListComponent implements OnInit {
     this.usersService.getAll().subscribe(users => {
       _.remove(users, { username: this.loggedUser.username });
       this.users = users;
-      console.log(users);
     });
   }
 
@@ -54,7 +53,6 @@ export class PeopleListComponent implements OnInit {
   unfollow(id) {
     this.usersService.unfollow(id).subscribe(
       data => {
-        console.log(data);
         this.socket.emit('refresh', {});
       },
       err => {

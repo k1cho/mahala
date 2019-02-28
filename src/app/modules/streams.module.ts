@@ -14,6 +14,7 @@ import { CommentService } from '../services/comment.service';
 import { RouterModule } from '@angular/router';
 import { PeopleListComponent } from '../components/people/people-list/people-list.component';
 import { UsersService } from '../services/users.service';
+import { FollowingListComponent } from '../components/following-list/following-list.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -25,7 +26,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     PostFormComponent,
     PostsComponent,
     CommentListComponent,
-    PeopleListComponent
+    PeopleListComponent,
+    FollowingListComponent
   ],
   imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule],
   exports: [StreamsComponent, ToolbarComponent],
