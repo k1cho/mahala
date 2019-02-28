@@ -17,7 +17,9 @@
             {{ user.username }}
           </h6>
           <p>Country</p>
-          <button class="btn waves-effect waves-light" (click)="follow(user._id)">Follow</button>
+          <button class="btn waves-effect waves-light" *ngIf="!checkIfUserIsFollowed(userArr, user._id)" (click)="follow(user._id)">Follow</button>
+          <button class="btn btn-invert waves-effect waves-light" *ngIf="checkIfUserIsFollowed(userArr, user._id)"
+            (click)="unfollow(user._id)">Unfollow</button>
           <a class="secondary-content" href="">
             <i class="material-icons">chat</i>
           </a>

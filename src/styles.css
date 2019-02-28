@@ -68,6 +68,25 @@ textarea.materialize-textarea {
   background-color: #823A91 !important;
 }
 
+.btn-invert,
+.btn-large-invert,
+.btn-small-invert {
+  text-decoration: none;
+  color: #802392 !important;
+  background-color: #fff !important;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
+}
+
+.btn-invert:hover,
+.btn-large-invert:hover,
+.btn-small-invert:hover {
+  color: #802392 !important;
+  background-color: #ddd !important;
+}
+
 .col .row {
   margin-left: -.75rem;
   margin-right: -.75rem;

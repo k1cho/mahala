@@ -18,6 +18,10 @@ export class UsersService {
     return this.http.post(baseUrl + '/follows/follow', { userId });
   }
 
+  unfollow(userId): Observable<any> {
+    return this.http.put(baseUrl + '/follows/unfollow', { userId });
+  }
+
   show(id): Observable<any> {
     return this.http.get(baseUrl + '/users/' + id);
   }
