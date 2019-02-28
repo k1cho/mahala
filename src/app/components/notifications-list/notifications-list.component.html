@@ -6,21 +6,24 @@
       <app-side-bar></app-side-bar>
     </div>
     <div class="col s12 m8 l8">
-      <ul class="collection col s12 m10 l10 dark" *ngIf="notifications.length > 0">
-        <li class="collection-item avatar" *ngFor="let n of notifications">
-          <img src="http://placehold.it/50x50" alt="" class="circle">
-          <span class="title">{{ n.message }}</span>
-          <a class="secondary-content">
-            <i class="material-icons">brightness_1</i>
-          </a>
-          <p class="time">{{ timeFromNow(n.created) }}</p>
-          <div>
-            <i class="material-icons check" (click)="markAsRead(n)">check_circle</i>
-            <i class="material-icons cancel" (click)="deleteNotification(n)">cancel</i>
-          </div>
-        </li>
-      </ul>
-      <ul class="collection col s12 m10 l10 dark" *ngIf="notifications.length <= 0">
+      <div *ngIf="notifications?.length > 0">
+        <ul class="collection col s12 m10 l10 dark" *ngFor="let n of notifications">
+          <li class="collection-item avatar">
+            <img src="http://placehold.it/50x50" alt="" class="circle">
+            <span class="title">{{ n.message }}</span>
+            <a class="secondary-content">
+              <i *ngIf="!n.read" class="material-icons">brightness_1</i>
+              <i *ngIf="n.read" class="material-icons">panorama_fish_eye</i>
+            </a>
+            <p class="time">{{ timeFromNow(n.created) }}</p>
+            <div>
+              <i class="material-icons check" (click)="markAsRead(n)" [ngClass]="{disabled: n.read}">check_circle</i>
+              <i class="material-icons cancel" (click)="deleteNotification(n)">cancel</i>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <ul class="collection col s12 m10 l10 dark" *ngIf="notifications?.length <= 0">
         <h3 class="text">You have no new Notifications.</h3>
       </ul>
     </div>

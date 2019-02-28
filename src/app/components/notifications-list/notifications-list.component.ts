@@ -25,7 +25,7 @@ export class NotificationsListComponent implements OnInit {
 
   getNotifications() {
     this.usersSerivce.getUserById(this.loggedUser._id).subscribe(user => {
-      this.notifications = user.notifications;
+      this.notifications = user.notifications.reverse();
     });
   }
 
@@ -35,7 +35,7 @@ export class NotificationsListComponent implements OnInit {
 
   markAsRead(notification) {
     this.usersSerivce.markAsRead(notification._id).subscribe(data => {
-      console.log(data);
+      this.socket.emit('refresh', {});
     });
   }
 

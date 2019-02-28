@@ -42,3 +42,8 @@
   color: red !important;
   margin-left: 10px !important;
 }
+
+.disabled {
+  color: #c0c0c0 !important;
+  cursor: no-drop !important;
+}
