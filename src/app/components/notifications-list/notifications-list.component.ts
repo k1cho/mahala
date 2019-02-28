@@ -40,6 +40,8 @@ export class NotificationsListComponent implements OnInit {
   }
 
   deleteNotification(notification) {
-    console.log(notification);
+    this.usersSerivce.markAsRead(notification._id, true).subscribe(data => {
+      this.socket.emit('refresh', {});
+    });
   }
 }
