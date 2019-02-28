@@ -6,7 +6,19 @@
       <app-side-bar></app-side-bar>
     </div>
     <div class="col s12 m8 l8">
-      <h2>Notifications</h2>
+      <ul class="collection col s12 m10 l10 dark" *ngIf="notifications.length > 0">
+        <li class="collection-item avatar" *ngFor="let n of notifications">
+          <img src="http://placehold.it/50x50" alt="" class="circle">
+          <span class="title">{{ n.message }}</span>
+          <a class="secondary-content">
+            <i class="material-icons">brightness_1</i>
+          </a>
+          <p class="time">{{ timeFromNow(n.created) }}</p>
+        </li>
+      </ul>
+      <ul class="collection col s12 m10 l10 dark" *ngIf="notifications.length <= 0">
+        <h3 class="text">You have no new Notifications.</h3>
+      </ul>
     </div>
   </div>
 </div>
