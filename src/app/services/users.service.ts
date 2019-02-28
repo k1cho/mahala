@@ -25,4 +25,8 @@ export class UsersService {
   getUserById(id): Observable<any> {
     return this.http.get(baseUrl + '/users/' + id);
   }
+
+  markAsRead(id, deleteValue?): Observable<any> {
+    return this.http.post(baseUrl + '/notifications/mark/' + id, { id, deleteValue });
+  }
 }

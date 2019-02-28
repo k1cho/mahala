@@ -32,4 +32,14 @@ export class NotificationsListComponent implements OnInit {
   timeFromNow(time) {
     return moment(time).fromNow();
   }
+
+  markAsRead(notification) {
+    this.usersSerivce.markAsRead(notification._id).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  deleteNotification(notification) {
+    console.log(notification);
+  }
 }
