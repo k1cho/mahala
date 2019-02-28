@@ -6,6 +6,7 @@ import { CommentListComponent } from '../components/comments/comment-list/commen
 import { PeopleListComponent } from '../components/people/people-list/people-list.component';
 import { FollowingListComponent } from '../components/following-list/following-list.component';
 import { FollowersListComponent } from '../components/followers-list/followers-list.component';
+import { NotificationsListComponent } from '../components/notifications-list/notifications-list.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'followers',
     component: FollowersListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'notifications',
+    component: NotificationsListComponent,
     canActivate: [AuthGuard]
   }
 ];
