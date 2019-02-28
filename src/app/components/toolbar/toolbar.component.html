@@ -3,7 +3,27 @@
     <div class="nav-wrapper">
       <a [routerLink]="['/streams']" class="brand-logo">Mahala</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class='dropdown-trigger' data-target='dropdown'>
+          <i class="fa fa-globe fa-1x badge"></i>
+          <span class="nav-label-icon">{{ notifications?.length }}</span>
+          <!-- Dropdown Structure -->
+          <ul id='dropdown' class='dropdown-content col s12 collection'>
+            <div *ngIf="notifications?.length > 0">
+              <li class="collection-item avatar" *ngFor="let n of notifications">
+                <img src="http://placehold.it/50x50" alt="" class="circle">
+                <span>{{ n.message }}</span>
+                <p class="time">{{ n.created }}</p>
+              </li>
+            </div>
+            <div *ngIf="notifications?.length <= 0">
+              <li class="collection-item avatar">
+                <span>No new notifications</span>
+              </li>
+            </div>
+          </ul>
+        </li>
         <li><a (click)="logout()">Logout</a></li>
+        <!-- Dropdown Trigger -->
       </ul>
     </div>
     <div class="nav-content">
