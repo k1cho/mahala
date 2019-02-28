@@ -22,7 +22,7 @@ export class UsersService {
     return this.http.put(baseUrl + '/follows/unfollow', { userId });
   }
 
-  show(id): Observable<any> {
+  getUserById(id): Observable<any> {
     return this.http.get(baseUrl + '/users/' + id);
   }
 }

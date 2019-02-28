@@ -5,37 +5,36 @@ import { TokenService } from 'src/app/services/token.service';
 import { Socket } from 'ngx-socket-io';
 
 @Component({
-  selector: 'app-people-list',
-  templateUrl: './people-list.component.html',
-  styleUrls: ['./people-list.component.css']
+  selector: 'app-followers-list',
+  templateUrl: './followers-list.component.html',
+  styleUrls: ['./followers-list.component.css']
 })
-export class PeopleListComponent implements OnInit {
+export class FollowersListComponent implements OnInit {
   users = [];
   loggedUser: any;
-  userArr: [];
+  following: [];
 
   constructor(private usersService: UsersService, private tokenService: TokenService, private socket: Socket) {}
 
   ngOnInit() {
     this.loggedUser = this.tokenService.getPayload();
-    this.getUsers();
-    this.getUser();
+    this.getFollowers();
+    this.getFollowing();
     this.socket.on('refreshPage', () => {
-      this.getUsers();
-      this.getUser();
+      this.getFollowers();
+      this.getFollowing();
     });
   }
 
-  getUsers() {
-    this.usersService.getAll().subscribe(users => {
-      _.remove(users, { username: this.loggedUser.username });
-      this.users = users;
-    });
-  }
-
-  getUser() {
+  getFollowers() {
     this.usersService.getUserById(this.loggedUser._id).subscribe(user => {
-      this.userArr = user.following;
+      this.users = user.followers;
+    });
+  }
+
+  getFollowing() {
+    this.usersService.getUserById(this.loggedUser._id).subscribe(user => {
+      this.following = user.following;
     });
   }
 

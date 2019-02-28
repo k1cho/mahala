@@ -16,14 +16,14 @@ export class FollowingListComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUser = this.tokenService.getPayload();
-    this.getUsers();
+    this.getFollowedUsers();
     this.socket.on('refreshPage', () => {
-      this.getUsers();
+      this.getFollowedUsers();
     });
   }
 
-  getUsers() {
-    this.usersService.show(this.loggedUser._id).subscribe(user => {
+  getFollowedUsers() {
+    this.usersService.getUserById(this.loggedUser._id).subscribe(user => {
       this.users = user.following;
     });
   }
