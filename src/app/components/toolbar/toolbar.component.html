@@ -3,23 +3,28 @@
     <div class="nav-wrapper">
       <a [routerLink]="['/streams']" class="brand-logo">Mahala</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class='dropdown-trigger' data-target='dropdown'>
+        <li class="dropdown-trigger" data-target="dropdown">
           <i class="fa fa-globe fa-1x badge"></i>
           <span class="nav-label-icon">{{ notifications?.length }}</span>
           <!-- Dropdown Structure -->
-          <ul id='dropdown' class='dropdown-content col s12 collection'>
+          <ul id="dropdown" class="dropdown-content col s12 collection">
             <div *ngIf="notifications?.length > 0">
               <li class="collection-item avatar" *ngFor="let n of notifications">
-                <img src="http://placehold.it/50x50" alt="" class="circle">
-                <span>{{ n.message }}</span>
-                <p class="time">{{ n.created }}</p>
+                <img src="http://placehold.it/50x50" alt="" class="circle" />
+                <span [ngClass]="{ isRead: n.read, unread: !n.read }">{{ n.message }}</span>
+                <p class="time">{{ timeFromNow(n.created) }}</p>
               </li>
             </div>
             <div *ngIf="notifications?.length <= 0">
               <li class="collection-item avatar">
-                <span>No new notifications</span>
+                <span class="text">No new notifications</span>
               </li>
             </div>
+            <li class="collection-item">
+              <p class="secondary-content darker">
+                <a class="markAll" (click)="markAllAsRead()">Mark all as Read</a>
+              </p>
+            </li>
           </ul>
         </li>
         <li><a (click)="logout()">Logout</a></li>
@@ -28,7 +33,7 @@
     </div>
     <div class="nav-content">
       <div class="nav-div">
-        <img class="circle responsive-img" src="http://placehold.it/100x100" alt="">
+        <img class="circle responsive-img" src="http://placehold.it/100x100" alt="" />
       </div>
       <h3 class="profile-name">{{ user.username }}</h3>
       <p class="user-text">This is a test</p>

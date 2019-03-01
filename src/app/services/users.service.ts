@@ -29,4 +29,8 @@ export class UsersService {
   markAsRead(id, deleteValue?): Observable<any> {
     return this.http.post(baseUrl + '/notifications/mark/' + id, { id, deleteValue });
   }
+
+  markAllAsRead(): Observable<any> {
+    return this.http.post(baseUrl + '/notifications/markAll', { all: true });
+  }
 }

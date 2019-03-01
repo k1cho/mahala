@@ -30,3 +30,30 @@
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
 }
+
+.time {
+  font-size: 10px;
+  color: #666565;
+  font-style: italic;
+}
+
+.darker {
+  background-color: rgb(29, 33, 41) !important;
+  border-color: #252A33 !important;
+}
+
+.secondary-content {
+  margin-top: -5px !important;
+}
+
+.isRead {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-weight: normal;
+}
+
+.unread {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-weight: normal;
+}
