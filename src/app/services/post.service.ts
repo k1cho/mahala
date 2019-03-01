@@ -22,6 +22,10 @@ export class PostService {
     return this.http.get(baseUrl + '/posts');
   }
 
+  getTopPosts(): Observable<any> {
+    return this.http.get(baseUrl + '/posts/stream/topPosts');
+  }
+
   like(post): Observable<any> {
     return this.http.post(baseUrl + '/posts/like', post);
   }

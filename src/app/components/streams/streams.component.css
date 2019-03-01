@@ -1,0 +1,21 @@
+.tabs a {
+  color: lightslategray;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tabs .active {
+  background-color: rgb(29, 33, 41) !important;
+  border-color: #252A33 !important;
+  color: #fafafa;
+}
+
+.tabs {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 48px;
+  width: 101% !important;
+  margin: 0 auto;
+  white-space: nowrap;
+}

@@ -17,6 +17,7 @@ import { UsersService } from '../services/users.service';
 import { FollowingListComponent } from '../components/following-list/following-list.component';
 import { FollowersListComponent } from '../components/followers-list/followers-list.component';
 import { NotificationsListComponent } from '../components/notifications-list/notifications-list.component';
+import { TopStreamsListComponent } from '../components/streams/top-streams-list/top-streams-list.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -31,7 +32,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     PeopleListComponent,
     FollowingListComponent,
     FollowersListComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    TopStreamsListComponent
   ],
   imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule],
   exports: [StreamsComponent, ToolbarComponent],

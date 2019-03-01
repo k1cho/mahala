@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-streams',
@@ -12,5 +13,6 @@ export class StreamsComponent implements OnInit {
 
   ngOnInit() {
     this.token = this.tokenService.getToken();
+    M.Tabs.init(document.querySelector('.tabs'), {});
   }
 }

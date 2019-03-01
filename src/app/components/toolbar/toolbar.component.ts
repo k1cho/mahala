@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
 import { Socket } from 'ngx-socket-io';
 import _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -21,7 +22,8 @@ export class ToolbarComponent implements OnInit {
     private authService: AuthService,
     private tokenService: TokenService,
     private usersService: UsersService,
-    private socket: Socket
+    private socket: Socket,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -40,10 +42,18 @@ export class ToolbarComponent implements OnInit {
   }
 
   getNotifications() {
-    this.usersService.getUserById(this.user._id).subscribe(user => {
-      this.notifications = user.notifications.reverse();
-      this.unreadNotificationsCount = _.filter(this.notifications, ['read', false]);
-    });
+    this.usersService.getUserById(this.user._id).subscribe(
+      user => {
+        this.notifications = user.notifications.reverse();
+        this.unreadNotificationsCount = _.filter(this.notifications, ['read', false]);
+      },
+      err => {
+        if (err.error.token === null) {
+          this.tokenService.deleteToken();
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 
   markAllAsRead() {
