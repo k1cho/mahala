@@ -49,11 +49,13 @@
 .isRead {
   margin: 0px !important;
   padding: 0px !important;
-  font-weight: normal;
+  font-weight: normal !important;
+  color: #fff;
 }
 
 .unread {
   margin: 0px !important;
   padding: 0px !important;
-  font-weight: normal;
+  font-weight: bold !important;
+  color: #64b5f6;
 }

@@ -5,6 +5,7 @@ import * as M from 'materialize-css';
 import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
 import { Socket } from 'ngx-socket-io';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,6 +15,7 @@ import { Socket } from 'ngx-socket-io';
 export class ToolbarComponent implements OnInit {
   user: any;
   notifications: [];
+  unreadNotificationsCount: [];
 
   constructor(
     private authService: AuthService,
@@ -40,6 +42,7 @@ export class ToolbarComponent implements OnInit {
   getNotifications() {
     this.usersService.getUserById(this.user._id).subscribe(user => {
       this.notifications = user.notifications.reverse();
+      this.unreadNotificationsCount = _.filter(this.notifications, ['read', false]);
     });
   }
 
