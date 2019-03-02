@@ -20,6 +20,7 @@ import { NotificationsListComponent } from '../components/notifications-list/not
 import { TopStreamsListComponent } from '../components/streams/top-streams-list/top-streams-list.component';
 import { ChatComponent } from '../components/chat/chat/chat.component';
 import { MessageComponent } from '../components/chat/message/message.component';
+import { MessageService } from '../services/message.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -41,6 +42,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
   ],
   imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule],
   exports: [StreamsComponent, ToolbarComponent],
-  providers: [TokenService, PostService, CommentService, UsersService]
+  providers: [TokenService, PostService, CommentService, UsersService, MessageService]
 })
 export class StreamsModule {}

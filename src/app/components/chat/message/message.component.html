@@ -44,7 +44,7 @@
     <div class="row">
       <div>
         <div class="inputRow">
-          <form>
+          <form #messageForm="ngForm">
             <div class="input-field inputField col s10">
               <textarea name="message" id="message" class="materialize-textarea inputBox"></textarea>
             </div>
@@ -52,7 +52,7 @@
               <button class="emojiBtn">E</button>
             </div>
             <div class="input-field col s1">
-              <button class="suffix btn">Send</button>
+              <button class="suffix btn" [disabled]="!messageForm.form.valid" (click)="store()">Send</button>
             </div>
           </form>
         </div>
