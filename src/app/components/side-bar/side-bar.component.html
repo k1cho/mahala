@@ -6,13 +6,13 @@
           <p class="active">{{ user?.posts.length }}</p>
         </a>
       </div>
-      <div class="col s12 m4">
-        <a href=""><span class="bold">Following</span>
+      <div class="col s12 m4" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/following']"><span class="bold">Following</span>
           <p class="active">{{ user?.following.length }}</p>
         </a>
       </div>
-      <div class="col s12 m4">
-        <a href=""><span class="bold">Followers</span>
+      <div class="col s12 m4" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/followers']"><span class="bold">Followers</span>
           <p class="active">{{ user?.followers.length }}</p>
         </a>
       </div>

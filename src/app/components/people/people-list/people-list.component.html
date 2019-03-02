@@ -20,7 +20,7 @@
           <button class="btn waves-effect waves-light" *ngIf="!checkIfUserIsFollowed(userArr, user._id)" (click)="follow(user._id)">Follow</button>
           <button class="btn btn-invert waves-effect waves-light" *ngIf="checkIfUserIsFollowed(userArr, user._id)"
             (click)="unfollow(user._id)">Unfollow</button>
-          <a class="secondary-content" href="">
+          <a class="secondary-content" [routerLink]="['/chat', user.username]" routerLinkActive="router-link-active">
             <i class="material-icons">chat</i>
           </a>
         </div>
