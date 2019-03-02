@@ -23,7 +23,11 @@ export class UsersService {
   }
 
   getUserById(id): Observable<any> {
-    return this.http.get(baseUrl + '/users/' + id);
+    return this.http.get(baseUrl + '/users/id/' + id);
+  }
+
+  getUserByUsername(username): Observable<any> {
+    return this.http.get(baseUrl + '/users/username/' + username);
   }
 
   markAsRead(id, deleteValue?): Observable<any> {

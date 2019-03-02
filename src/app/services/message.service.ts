@@ -10,6 +10,10 @@ export class MessageService {
   constructor(private http: HttpClient) {}
 
   store(senderId, receiverId, receiverName, message): Observable<any> {
-    return this.http.post(baseUrl + '/chat/' + senderId + '/' + receiverId, { receiverId, receiverName, message });
+    return this.http.post(baseUrl + '/messages/chat/' + senderId + '/' + receiverId, {
+      receiverId,
+      receiverName,
+      message
+    });
   }
 }

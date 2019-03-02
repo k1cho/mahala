@@ -46,7 +46,7 @@
         <div class="inputRow">
           <form #messageForm="ngForm">
             <div class="input-field inputField col s10">
-              <textarea name="message" id="message" class="materialize-textarea inputBox"></textarea>
+              <textarea name="message" [(ngModel)]="message" class="materialize-textarea inputBox"></textarea>
             </div>
             <div class="input-field col s1 emojiDiv">
               <button class="emojiBtn">E</button>
