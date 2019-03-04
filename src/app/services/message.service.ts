@@ -16,4 +16,8 @@ export class MessageService {
       message
     });
   }
+
+  getAll(senderId, receiverId): Observable<any> {
+    return this.http.get(baseUrl + '/messages/chat/' + senderId + '/' + receiverId);
+  }
 }

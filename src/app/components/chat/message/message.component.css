@@ -57,7 +57,8 @@ img.imgMsg {
 }
 
 .message {
-  font-size: 16px;
+  font-size: 16px !important;
+  overflow-wrap: break-word !important;
 }
 
 .message-detail {
@@ -70,12 +71,12 @@ img.imgMsg {
 }
 
 .chat-bubble {
-  border-radius: 10px;
-  display: inline-block;
-  padding: 10px 18px;
-  position: relative;
-  margin: 10px;
-  max-width: 80%;
+  border-radius: 10px !important;
+  display: inline-block !important;
+  padding: 10px 18px !important;
+  position: relative !important;
+  margin: 10px !important;
+  max-width: 80% !important;
 }
 
 .chat-bubble:before {
@@ -88,9 +89,9 @@ img.imgMsg {
 }
 
 .chat-bubble.left {
-  background: #343B47;
-  float: left;
-  margin-left: 7px;
+  background: #343B47 !important;
+  float: left !important;
+  margin-left: 7px !important;
 }
 
 .chat-bubble.left:before {
@@ -104,8 +105,8 @@ img.imgMsg {
 
 .chat-bubble.right {
   background: rgb(29, 33, 41) !important;
-  float: right;
-  margin-right: 7px;
+  float: right !important;
+  margin-right: 7px !important;
 }
 
 .chat-bubble.right:before {
