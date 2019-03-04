@@ -21,6 +21,7 @@ import { TopStreamsListComponent } from '../components/streams/top-streams-list/
 import { ChatComponent } from '../components/chat/chat/chat.component';
 import { MessageComponent } from '../components/chat/message/message.component';
 import { MessageService } from '../services/message.service';
+import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -40,7 +41,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ChatComponent,
     MessageComponent
   ],
-  imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule],
+  imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule, NgxAutoScrollModule],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService, CommentService, UsersService, MessageService]
 })
