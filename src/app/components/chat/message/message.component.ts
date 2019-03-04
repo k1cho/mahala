@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,12 +10,15 @@ import { Socket } from 'ngx-socket-io';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent implements OnInit, AfterViewInit {
   receiver: string;
+  sender: string;
   loggedUser: any;
   message: any;
   receiverData: any;
   messages: [];
+  typingMessage;
+  typing = false;
 
   constructor(
     private tokenService: TokenService,
@@ -34,7 +37,28 @@ export class MessageComponent implements OnInit {
         this.getUser(this.receiver);
       });
     });
+
+    this.socket.on('is_typing', data => {
+      if (data.sender === this.receiver) {
+        this.typing = true;
+      }
+    });
+
+    this.socket.on('is_not_typing', data => {
+      if (data.sender === this.receiver) {
+        this.typing = false;
+      }
+    });
+
     this.loggedUser = this.tokenService.getPayload();
+  }
+
+  ngAfterViewInit() {
+    const users = {
+      user1: this.loggedUser.username,
+      user2: this.receiver
+    };
+    this.socket.emit('join chat', users);
   }
 
   getUser(username) {
@@ -60,5 +84,23 @@ export class MessageComponent implements OnInit {
     this.messagesService.getAll(senderId, receiverId).subscribe(data => {
       this.messages = data.messages;
     });
+  }
+
+  isTyping() {
+    this.socket.emit('start_typing', {
+      sender: this.loggedUser.username,
+      receiver: this.receiver
+    });
+
+    if (this.typingMessage) {
+      clearTimeout(this.typingMessage);
+    }
+
+    this.typingMessage = setTimeout(() => {
+      this.socket.emit('stop_typing', {
+        sender: this.loggedUser.username,
+        receiver: this.receiver
+      });
+    }, 1500);
   }
 }
