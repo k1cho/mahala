@@ -18,6 +18,7 @@ export class ToolbarComponent implements OnInit {
   notifications: [];
   unreadNotificationsCount: [];
   chats: [];
+  msgCount = 0;
 
   constructor(
     private authService: AuthService,
@@ -54,7 +55,7 @@ export class ToolbarComponent implements OnInit {
         this.notifications = user.notifications.reverse();
         this.unreadNotificationsCount = _.filter(this.notifications, ['read', false]);
         this.chats = user.chats;
-        console.log(this.chats);
+        this.checkIfMsgIsRead(this.chats);
       },
       err => {
         if (err.error.token === null) {
@@ -69,6 +70,19 @@ export class ToolbarComponent implements OnInit {
     this.usersService.markAllAsRead().subscribe(data => {
       this.socket.emit('refresh', {});
     });
+  }
+
+  checkIfMsgIsRead(arr) {
+    const checkArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      const receiver = arr[i].msgId.messages[arr[i].msgId.messages.length - 1];
+      if (this.router.url !== `/chat/${receiver.senderName}`) {
+        if (receiver.isRead === false && receiver.receiverName === this.user.username) {
+          checkArr.push(1);
+          this.msgCount = _.sum(checkArr);
+        }
+      }
+    }
   }
 
   timeFromNow(time) {

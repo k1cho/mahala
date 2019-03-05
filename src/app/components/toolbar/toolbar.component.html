@@ -30,13 +30,11 @@
           </ul>
         </li>
         <li class="dropdown-trigger1" data-target="dropdown1">
-          <i class="fa fa-bell fa-1x badge"></i>
-          <span class="nav-label-icon" *ngIf="unreadNotificationsCount?.length > 0">{{
-            unreadNotificationsCount?.length
-            }}</span>
+          <i class="fa fa-comments fa-1x badge"></i>
+          <span class="nav-label-icon" *ngIf="msgCount > 0">{{ msgCount }}</span>
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content col s12 collection">
-            <div *ngIf="notifications?.length > 0">
+            <div *ngIf="chats?.length > 0">
               <li class="collection-item avatar" *ngFor="let chat of chats">
                 <img src="http://placehold.it/50x50" alt="" class="circle" />
                 <span class="isRead">{{ chat.receiverId.username }}
