@@ -43,14 +43,13 @@
 }
 
 .time2 {
-  font-size: 10px;
+  font-size: 8px;
   color: #666565;
   font-style: italic;
-  float: right;
 }
 
 .message {
-  font-size: 10px;
+  font-size: 12px;
   color: #fafafa !important;
   margin-top: 3px !important;
   white-space: nowrap;

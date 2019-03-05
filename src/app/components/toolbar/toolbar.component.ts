@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { Socket } from 'ngx-socket-io';
 import _ from 'lodash';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -25,7 +26,8 @@ export class ToolbarComponent implements OnInit {
     private tokenService: TokenService,
     private usersService: UsersService,
     private socket: Socket,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -76,6 +78,7 @@ export class ToolbarComponent implements OnInit {
     const checkArr = [];
     for (let i = 0; i < arr.length; i++) {
       const receiver = arr[i].msgId.messages[arr[i].msgId.messages.length - 1];
+
       if (this.router.url !== `/chat/${receiver.senderName}`) {
         if (receiver.isRead === false && receiver.receiverName === this.user.username) {
           checkArr.push(1);
@@ -83,6 +86,13 @@ export class ToolbarComponent implements OnInit {
         }
       }
     }
+  }
+
+  goToChatPage(name) {
+    this.router.navigate(['/chat', name]);
+    this.messageService.markReceiverMessage(this.user.username, name).subscribe(data => {
+      this.socket.emit('refresh', {});
+    });
   }
 
   timeFromNow(time) {

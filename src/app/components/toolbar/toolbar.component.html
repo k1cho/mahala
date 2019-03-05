@@ -35,19 +35,20 @@
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content col s12 collection">
             <div *ngIf="chats?.length > 0">
-              <li class="collection-item avatar" *ngFor="let chat of chats" [routerLink]="['/chat', chat.receiverId.username]">
+              <li class="collection-item avatar" *ngFor="let chat of chats" (click)="goToChatPage(chat.receiverId.username)">
                 <img src="http://placehold.it/50x50" alt="" class="circle" />
                 <span class="isRead">{{ chat.receiverId.username }}
-                  <a class="time2">{{ timeFromNow(chat.msgId.messages[chat.msgId.messages?.length-1].createdAt) }}</a>
                 </span>
+
                 <p class="message">{{ chat.msgId.messages[chat.msgId.messages?.length-1].body }}
-                  <a class="secondary-content" *ngIf="!chat.msgId.messages[chat.msgId.messages?.length-1].isRead">
+                  <a class="secondary-content" *ngIf="!chat.msgId.messages[chat.msgId.messages?.length-1].isRead && chat.receiverId.username !== chat.msgId.messages[chat.msgId.messages?.length-1].receiverName">
                     <i class="material-icons">brightness_1</i>
                   </a>
                   <a class="secondary-content" *ngIf="chat.msgId.messages[chat.msgId.messages?.length-1].isRead">
                     <i class="material-icons">panorama_fish_eye</i>
                   </a>
                 </p>
+                <p class="time2">{{ timeFromNow(chat.msgId.messages[chat.msgId.messages?.length-1].createdAt) }}</p>
               </li>
             </div>
             <li class="collection-item">
