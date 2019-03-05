@@ -50,10 +50,18 @@
 }
 
 .message {
-  font-size: 12px;
+  font-size: 10px;
   color: #fafafa !important;
   font-style: italic;
-  margin-top: 3px !important
+  margin-top: 3px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 17ch;
+}
+
+.logout {
+  margin-left: 30px !important;
 }
 
 .darker {
