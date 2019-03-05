@@ -7,7 +7,7 @@
           <i class="fa fa-globe fa-1x badge"></i>
           <span class="nav-label-icon" *ngIf="unreadNotificationsCount?.length > 0">{{
             unreadNotificationsCount?.length
-          }}</span>
+            }}</span>
           <!-- Dropdown Structure -->
           <ul id="dropdown" class="dropdown-content col s12 collection">
             <div *ngIf="notifications?.length > 0">
@@ -15,6 +15,41 @@
                 <img src="http://placehold.it/50x50" alt="" class="circle" />
                 <span [ngClass]="{ isRead: n.read === true, unread: n.read === false }">{{ n.message }}</span>
                 <p class="time">{{ timeFromNow(n.created) }}</p>
+              </li>
+            </div>
+            <div *ngIf="notifications?.length <= 0">
+              <li class="collection-item avatar">
+                <span class="text">No new notifications</span>
+              </li>
+            </div>
+            <li class="collection-item">
+              <p class="secondary-content darker">
+                <a class="markAll" (click)="markAllAsRead()">Mark all as Read</a>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-trigger1" data-target="dropdown1">
+          <i class="fa fa-bell fa-1x badge"></i>
+          <span class="nav-label-icon" *ngIf="unreadNotificationsCount?.length > 0">{{
+            unreadNotificationsCount?.length
+            }}</span>
+          <!-- Dropdown Structure -->
+          <ul id="dropdown1" class="dropdown-content col s12 collection">
+            <div *ngIf="notifications?.length > 0">
+              <li class="collection-item avatar" *ngFor="let chat of chats">
+                <img src="http://placehold.it/50x50" alt="" class="circle" />
+                <span class="isRead">{{ chat.receiverId.username }}
+                  <a class="time2">{{ timeFromNow(chat.msgId.messages[chat.msgId.messages?.length-1].createdAt) }}</a>
+                </span>
+                <p class="message">{{ chat.msgId.messages[chat.msgId.messages?.length-1].body }}
+                  <a class="secondary-content">
+                    <i class="material-icons">brightness_1</i>
+                  </a>
+                  <a class="secondary-content">
+                    <i class="material-icons">panorama_fish_eye</i>
+                  </a>
+                </p>
               </li>
             </div>
             <div *ngIf="notifications?.length <= 0">

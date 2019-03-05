@@ -17,6 +17,7 @@ export class ToolbarComponent implements OnInit {
   user: any;
   notifications: [];
   unreadNotificationsCount: [];
+  chats: [];
 
   constructor(
     private authService: AuthService,
@@ -28,9 +29,15 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.tokenService.getPayload();
-    const dropdown = document.querySelector('.dropdown-trigger');
+    const dropdown = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropdown, {
       alignment: 'right',
+      coverTrigger: false
+    });
+
+    const dropdown1 = document.querySelectorAll('.dropdown-trigger1');
+    M.Dropdown.init(dropdown1, {
+      alignment: 'left',
       coverTrigger: false
     });
 
@@ -46,6 +53,8 @@ export class ToolbarComponent implements OnInit {
       user => {
         this.notifications = user.notifications.reverse();
         this.unreadNotificationsCount = _.filter(this.notifications, ['read', false]);
+        this.chats = user.chats;
+        console.log(this.chats);
       },
       err => {
         if (err.error.token === null) {
