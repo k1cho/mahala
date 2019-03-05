@@ -52,15 +52,23 @@
       <div>
         <div class="inputRow">
           <form #messageForm="ngForm">
-            <div class="input-field inputField col s10">
+            <div class="input-field inputField col s8 m10 l10">
               <textarea name="message" [(ngModel)]="message" class="materialize-textarea inputBox" (keypress)="isTyping()"
                 (keydown.enter)="store()"></textarea>
             </div>
-            <div class="input-field col s1 emojiDiv">
-              <button class="emojiBtn">E</button>
+            <div class="input-field col s1 m1 l1 emojiDiv">
+              <button class="emojiBtn" (click)="toggle()">😄</button>
+              <div class="emoji-content-editable" (emojiPickerCaretEmitter)="handleCurrentCaret($event)" (input)="content = $event.target.textContent"
+                [textContent]="content" contenteditable="true">
+              </div>
+              <i class="emoji-toggle-button imgBtn" [(emojiPickerIf)]="toggled" [emojiPickerPreserveSelection]="false"
+                [emojiPickerDirection]="direction" [emojiPickerAutofocus]="true" (emojiPickerSelect)="handleSelection($event)">
+              </i>
             </div>
-            <div class="input-field col s1">
-              <button class="suffix btn" [disabled]="!messageForm.form.valid" (click)="store()">Send</button>
+            <div class="input-field col s1 m1 l1">
+              <button class="suffix btn" [disabled]="!messageForm.form.valid" (click)="store()"><i class="material-icons">
+                  send
+                </i></button>
             </div>
           </form>
         </div>

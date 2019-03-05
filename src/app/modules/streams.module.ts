@@ -22,6 +22,7 @@ import { ChatComponent } from '../components/chat/chat/chat.component';
 import { MessageComponent } from '../components/chat/message/message.component';
 import { MessageService } from '../services/message.service';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
+import { EmojiPickerModule } from 'ng2-emoji-picker';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -41,7 +42,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ChatComponent,
     MessageComponent
   ],
-  imports: [CommonModule, FormsModule, SocketIoModule.forRoot(config), RouterModule, NgxAutoScrollModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SocketIoModule.forRoot(config),
+    RouterModule,
+    NgxAutoScrollModule,
+    EmojiPickerModule.forRoot()
+  ],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService, CommentService, UsersService, MessageService]
 })
