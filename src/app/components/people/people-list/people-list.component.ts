@@ -13,6 +13,7 @@ export class PeopleListComponent implements OnInit {
   users = [];
   loggedUser: any;
   userArr: [];
+  onlineUsers: [];
 
   constructor(private usersService: UsersService, private tokenService: TokenService, private socket: Socket) {}
 
@@ -64,6 +65,19 @@ export class PeopleListComponent implements OnInit {
   checkIfUserIsFollowed(arr, id) {
     const result = _.find(arr, ['_id', id]);
     if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  online(event) {
+    this.onlineUsers = event;
+  }
+
+  checkIfUserIsOnline(username) {
+    const result = _.indexOf(this.onlineUsers, username);
+    if (result > -1) {
       return true;
     } else {
       return false;
