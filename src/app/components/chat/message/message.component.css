@@ -35,8 +35,16 @@
   float: left !important;
 }
 
-.isOnline {
+.isOffline {
   color: rgba(255, 255, 255, 0.712);
+  margin-top: -2px !important;
+  padding: 0px !important;
+  font-size: 11px;
+  float: left !important;
+}
+
+.isOnline {
+  color: rgb(111, 204, 92);
   margin-top: -2px !important;
   padding: 0px !important;
   font-size: 11px;

@@ -1,17 +1,19 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { Socket } from 'ngx-socket-io';
 import { CaretEvent, EmojiEvent } from 'ng2-emoji-picker';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit, AfterViewInit {
+export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() users;
   receiver: string;
   sender: string;
   loggedUser: any;
@@ -20,6 +22,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
   messages: [];
   typingMessage;
   typing = false;
+  isOnline = false;
 
   public eventMock;
   public eventPosMock;
@@ -70,6 +73,17 @@ export class MessageComponent implements OnInit, AfterViewInit {
       user2: this.receiver
     };
     this.socket.emit('join chat', users);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.users.currentValue.length > 0) {
+      const result = _.indexOf(changes.users.currentValue, this.receiver);
+      if (result > -1) {
+        this.isOnline = true;
+      } else {
+        this.isOnline = false;
+      }
+    }
   }
 
   getUser(username) {
