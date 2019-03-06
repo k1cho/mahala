@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 import * as M from 'materialize-css';
@@ -14,7 +14,7 @@ import { MessageService } from 'src/app/services/message.service';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, AfterViewInit {
   user: any;
   notifications: [];
   unreadNotificationsCount: [];
@@ -44,10 +44,21 @@ export class ToolbarComponent implements OnInit {
       coverTrigger: false
     });
 
+    this.socket.emit('online', {
+      room: 'global',
+      user: this.user.username
+    });
+
     this.getNotifications();
 
     this.socket.on('refreshPage', () => {
       this.getNotifications();
+    });
+  }
+
+  ngAfterViewInit() {
+    this.socket.on('usersOnline', data => {
+      console.log(data);
     });
   }
 
@@ -83,10 +94,10 @@ export class ToolbarComponent implements OnInit {
   checkIfMsgIsRead(arr) {
     const checkArr = [];
     for (let i = 0; i < arr.length; i++) {
-      const receiver = arr[i].msgId.messages[arr[i].msgId.messages.length - 1];
+      const data = arr[i].msgId.messages[arr[i].msgId.messages.length - 1];
 
-      if (this.router.url !== `/chat/${receiver.senderName}`) {
-        if (receiver.isRead === false && receiver.receiverName === this.user.username) {
+      if (this.router.url !== `/chat/${data.senderName}`) {
+        if (data.isRead === false && data.receiverName === this.user.username) {
           checkArr.push(1);
           this.msgCount = _.sum(checkArr);
         }
