@@ -74,6 +74,12 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
+  markAllMessagesAsRead() {
+    this.messageService.markAllAsRead().subscribe(() => {
+      this.socket.emit('refresh', {});
+    });
+  }
+
   checkIfMsgIsRead(arr) {
     const checkArr = [];
     for (let i = 0; i < arr.length; i++) {

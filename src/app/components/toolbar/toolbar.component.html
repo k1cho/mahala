@@ -41,10 +41,10 @@
                 </span>
 
                 <p class="message">{{ chat.msgId.messages[chat.msgId.messages?.length-1].body }}
-                  <a class="secondary-content" *ngIf="!chat.msgId.messages[chat.msgId.messages?.length-1].isRead && chat.receiverId.username !== chat.msgId.messages[chat.msgId.messages?.length-1].receiverName">
+                  <a class="secondary-content" *ngIf="chat.msgId.messages[chat.msgId.messages?.length-1].isRead === 'false' && chat.receiverId.username !== chat.msgId.messages[chat.msgId.messages?.length-1].receiverName">
                     <i class="material-icons">brightness_1</i>
                   </a>
-                  <a class="secondary-content" *ngIf="chat.msgId.messages[chat.msgId.messages?.length-1].isRead">
+                  <a class="secondary-content" *ngIf="chat.msgId.messages[chat.msgId.messages?.length-1].isRead === 'true'">
                     <i class="material-icons">panorama_fish_eye</i>
                   </a>
                 </p>
@@ -53,7 +53,7 @@
             </div>
             <li class="collection-item">
               <p class="secondary-content darker">
-                <a class="markAll" (click)="markAllAsRead()">Mark all as Read</a>
+                <a class="markAll" (click)="markAllMessagesAsRead()">Mark all as Read</a>
               </p>
             </li>
           </ul>

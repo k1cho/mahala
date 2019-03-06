@@ -55,7 +55,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 17ch;
+  max-width: 15ch;
 }
 
 .logout {
