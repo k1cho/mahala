@@ -9,7 +9,8 @@
       <div *ngIf="notifications?.length > 0">
         <ul class="collection col s12 m10 l10 dark" *ngFor="let n of notifications">
           <li class="collection-item avatar">
-            <img src="http://placehold.it/50x50" alt="" class="circle">
+            <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{n.sender.picVersion}}/{{n.sender.picId}}"
+              alt="" class="circle">
             <span class="title">{{ n.message }}</span>
             <a class="secondary-content">
               <i *ngIf="!n.read" class="material-icons">brightness_1</i>

@@ -32,7 +32,8 @@
       </div>
       <ul class="collection col s12 m12 l10 dark" *ngFor="let comment of comments">
         <li class="collection-item avatar">
-          <img class="circle" src="http://placehold.it/100x100" alt="">
+          <img class="circle" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{comment.user.picVersion}}/{{comment.user.picId}}"
+            alt="">
           <span class="title">
             {{ comment.user.username }}
           </span>

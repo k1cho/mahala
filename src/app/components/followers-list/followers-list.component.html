@@ -9,7 +9,8 @@
       <div class="row col s12 m6 l4 cardDiv dark" *ngFor="let user of users">
         <a href="">
           <div class="card-image imgDiv">
-            <img class="imgCircle responsive-img" src="http://placehold.it/100x100" alt="">
+            <img class="imgCircle responsive-img" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{user.picVersion}}/{{user.picId}}"
+              alt="">
           </div>
         </a>
         <div class="card-action">
