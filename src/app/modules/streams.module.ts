@@ -25,6 +25,7 @@ import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { ImageListComponent } from '../components/images/image-list/image-list.component';
 import { ImageFormComponent } from '../components/images/image-form/image-form.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -52,7 +53,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     SocketIoModule.forRoot(config),
     RouterModule,
     NgxAutoScrollModule,
-    EmojiPickerModule.forRoot()
+    EmojiPickerModule.forRoot(),
+    FileUploadModule
   ],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService, CommentService, UsersService, MessageService]

@@ -37,4 +37,8 @@ export class UsersService {
   markAllAsRead(): Observable<any> {
     return this.http.post(baseUrl + '/notifications/markAll', { all: true });
   }
+
+  addImage(image): Observable<any> {
+    return this.http.post(baseUrl + '/images/upload-image', { image });
+  }
 }
