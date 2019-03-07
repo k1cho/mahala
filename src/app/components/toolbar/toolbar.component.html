@@ -19,7 +19,7 @@
             </div>
             <div *ngIf="notifications?.length <= 0">
               <li class="collection-item avatar">
-                <span class="text">No new notifications</span>
+                <span class="text">No notifications.</span>
               </li>
             </div>
             <li class="collection-item">
@@ -49,6 +49,11 @@
                   </a>
                 </p>
                 <p class="time2">{{ timeFromNow(chat.msgId.messages[chat.msgId.messages?.length-1].createdAt) }}</p>
+              </li>
+            </div>
+            <div *ngIf="chats?.length <= 0">
+              <li class="collection-item avatar">
+                <span class="text">No messages.</span>
               </li>
             </div>
             <li class="collection-item">
