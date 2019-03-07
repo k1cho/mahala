@@ -30,4 +30,13 @@ export class ImageListComponent implements OnInit {
       err => console.log(err)
     );
   }
+
+  setProfileImage(image) {
+    this.usersService.setProfilePic(image.imgId, image.imgVersion).subscribe(
+      () => {
+        this.socket.emit('refresh', {});
+      },
+      err => console.log(err)
+    );
+  }
 }

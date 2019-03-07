@@ -7,23 +7,20 @@
     </div>
 
     <div class="col s12 m8 l8">
-      <div class="row">
-        <div class="col s12 m10 l10 dark">
-          <app-image-form></app-image-form>
-        </div>
+      <div class="row col s12 m10 l10 dark">
+        <app-image-form></app-image-form>
       </div>
 
-      <div class="row">
-        <div class="col s12 m3 l3 cardDiv dark" *ngFor="let image of images">
-          <div class="card-image imgDiv">
-            <img class="responsive-img imgCircle" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{image.imgVersion}}/{{image.imgId}}"
-              alt="">
-          </div>
-          <div class="card-action">
-            <button class="btn btn-block imgBtn">
-              Set as Profile
-            </button>
-          </div>
+      <div class="row col s12 m3 l3 cardDiv dark" *ngFor="let image of images">
+        <div class="card-image imgDiv">
+          <img class="responsive-img imgCircle" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{image.imgVersion}}/{{image.imgId}}"
+            alt="">
+        </div>
+
+        <div class="card-action">
+          <button class="btn btn-block imgBtn" (click)="setProfileImage(image)">
+            Set as Profile
+          </button>
         </div>
       </div>
     </div>

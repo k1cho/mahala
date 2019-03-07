@@ -41,4 +41,8 @@ export class UsersService {
   addImage(image): Observable<any> {
     return this.http.post(baseUrl + '/images/upload-image', { image });
   }
+
+  setProfilePic(imgId, imgVersion): Observable<any> {
+    return this.http.get(baseUrl + '/images/set-profile-image/' + imgId + '/' + imgVersion);
+  }
 }
