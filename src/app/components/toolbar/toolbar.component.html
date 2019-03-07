@@ -12,7 +12,8 @@
           <ul id="dropdown" class="dropdown-content col s12 collection">
             <div *ngIf="notifications?.length > 0">
               <li class="collection-item avatar" *ngFor="let n of notifications">
-                <img src="http://placehold.it/50x50" alt="" class="circle" />
+                <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{n.sender.picVersion}}/{{n.sender.picId}}"
+                  alt="" class="circle" />
                 <span [ngClass]="{ isRead: n.read === true, unread: n.read === false }">{{ n.message }}</span>
                 <p class="time">{{ timeFromNow(n.created) }}</p>
               </li>
@@ -36,7 +37,8 @@
           <ul id="dropdown1" class="dropdown-content col s12 collection">
             <div *ngIf="chats?.length > 0">
               <li class="collection-item avatar" *ngFor="let chat of chats" (click)="goToChatPage(chat.receiverId.username)">
-                <img src="http://placehold.it/50x50" alt="" class="circle" />
+                <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}"
+                  alt="" class="circle" />
                 <span class="isRead">{{ chat.receiverId.username }}
                 </span>
 
