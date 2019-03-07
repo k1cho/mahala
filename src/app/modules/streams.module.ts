@@ -24,6 +24,7 @@ import { MessageService } from '../services/message.service';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { ImageListComponent } from '../components/images/image-list/image-list.component';
+import { ImageFormComponent } from '../components/images/image-form/image-form.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -42,7 +43,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     TopStreamsListComponent,
     ChatComponent,
     MessageComponent,
-    ImageListComponent
+    ImageListComponent,
+    ImageFormComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,32 @@
+.imgDiv {
+  display: block !important;
+  position: relative !important;
+  text-align: center !important;
+  margin-top: 25px !important;
+}
+
+.imgCircle {
+  width: 150px !important;
+  height: 150px !important;
+  border-radius: 50% !important;
+  margin: 0 auto !important;
+}
+
+.card-action {
+  height: 50px !important;
+}
+
+.card-image {
+  height: 200px;
+}
+
+.cardDiv {
+  margin: 10px;
+  height: auto !important;
+}
+
+.imgBtn {
+  margin: 0 auto !important;
+  text-align: center !important;
+  margin-top: -20px !important;
+}
