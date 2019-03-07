@@ -21,6 +21,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   unreadNotificationsCount: [];
   chats: [];
   msgCount = 0;
+  picId: any;
+  picVersion: any;
 
   constructor(
     private authService: AuthService,
@@ -66,6 +68,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   getNotifications() {
     this.usersService.getUserById(this.user._id).subscribe(
       user => {
+        this.picId = user.picId;
+        this.picVersion = user.picVersion;
         this.notifications = user.notifications.reverse();
         this.unreadNotificationsCount = _.filter(this.notifications, ['read', false]);
         this.chats = user.chats;

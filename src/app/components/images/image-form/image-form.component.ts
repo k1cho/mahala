@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { UsersService } from 'src/app/services/users.service';
+import { Socket } from 'ngx-socket-io';
 
 const URL = 'http://localhost:3001/api/mahala/upload-image';
 
@@ -17,7 +18,7 @@ export class ImageFormComponent implements OnInit {
 
   selectedFile: any;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private socket: Socket) {}
 
   ngOnInit() {}
 
@@ -37,6 +38,7 @@ export class ImageFormComponent implements OnInit {
           console.log(image);
           const filePath = <HTMLInputElement>document.getElementById('filePath');
           filePath.value = '';
+          this.socket.emit('refresh', {});
         },
         err => console.log(err)
       );

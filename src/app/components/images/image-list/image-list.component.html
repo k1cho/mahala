@@ -8,15 +8,16 @@
 
     <div class="col s12 m8 l8">
       <div class="row">
-        <div class="col s12 dark">
+        <div class="col s12 m10 l10 dark">
           <app-image-form></app-image-form>
         </div>
       </div>
 
       <div class="row">
-        <div class="col s12 m6 l4 cardDiv dark">
+        <div class="col s12 m3 l3 cardDiv dark" *ngFor="let image of images">
           <div class="card-image imgDiv">
-            <img class="imgCircle" src="http://placehold.it/100x100" alt="">
+            <img class="responsive-img imgCircle" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{image.imgVersion}}/{{image.imgId}}"
+              alt="">
           </div>
           <div class="card-action">
             <button class="btn btn-block imgBtn">
