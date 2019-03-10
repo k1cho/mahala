@@ -20,6 +20,11 @@
   white-space: nowrap;
 }
 
+.tab {
+  cursor: pointer !important;
+  width: 33.33333% !important;
+}
+
 .card_image {
   width: 200px;
   height: auto !important;

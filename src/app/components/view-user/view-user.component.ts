@@ -8,6 +8,9 @@ import M from 'materialize-css';
 })
 export class ViewUserComponent implements OnInit, AfterViewInit {
   tablElement: any;
+  postsTab = true;
+  followingTab = false;
+  followersTab = false;
 
   constructor() {}
 
@@ -18,5 +21,25 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.tablElement.style.display = 'none';
+  }
+
+  changeTab(value) {
+    if (value === 'posts') {
+      this.postsTab = true;
+      this.followersTab = false;
+      this.followingTab = false;
+    }
+
+    if (value === 'following') {
+      this.postsTab = false;
+      this.followersTab = false;
+      this.followingTab = true;
+    }
+
+    if (value === 'followers') {
+      this.postsTab = false;
+      this.followersTab = true;
+      this.followingTab = false;
+    }
   }
 }
