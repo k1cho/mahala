@@ -3,6 +3,7 @@ import { UsersService } from 'src/app/services/users.service';
 import _ from 'lodash';
 import { TokenService } from 'src/app/services/token.service';
 import { Socket } from 'ngx-socket-io';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-people-list',
@@ -15,7 +16,12 @@ export class PeopleListComponent implements OnInit {
   userArr: [];
   onlineUsers: [];
 
-  constructor(private usersService: UsersService, private tokenService: TokenService, private socket: Socket) {}
+  constructor(
+    private usersService: UsersService,
+    private tokenService: TokenService,
+    private socket: Socket,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loggedUser = this.tokenService.getPayload();
@@ -82,5 +88,9 @@ export class PeopleListComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  viewUser(user) {
+    this.router.navigate([user.username]);
   }
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="col s12 m8 l8">
       <div class="row col s12 m6 l4 cardDiv dark" *ngFor="let user of users">
-        <a href="">
+        <a (click)="viewUser(user)">
           <div class="card-image imgDiv">
             <img class="imgCircle responsive-img" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{user.picVersion}}/{{user.picId}}"
               alt="">

@@ -10,6 +10,7 @@
   position: relative !important;
   text-align: center !important;
   margin-top: 25px !important;
+  cursor: pointer !important;
 }
 
 .imgCircle {

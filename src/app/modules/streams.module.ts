@@ -26,6 +26,7 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { ImageListComponent } from '../components/images/image-list/image-list.component';
 import { ImageFormComponent } from '../components/images/image-form/image-form.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ViewUserComponent } from '../components/view-user/view-user.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -45,7 +46,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ChatComponent,
     MessageComponent,
     ImageListComponent,
-    ImageFormComponent
+    ImageFormComponent,
+    ViewUserComponent
   ],
   imports: [
     CommonModule,
