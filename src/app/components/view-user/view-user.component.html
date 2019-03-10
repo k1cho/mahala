@@ -39,7 +39,8 @@
           <div class="row" *ngIf="postsTab">
             <ul class="collection col s12 m12 l10 dark" *ngFor="let post of posts">
               <li class="collection-item avatar">
-                <img src="http://placehold.it/100x100" alt="" class="circle">
+                <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}"
+                  alt="" class="circle">
                 <span class="post">{{ post.user.username }}</span>
                 <p class="time">{{ post.created }} <br> Country</p>
               </li>
