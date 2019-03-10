@@ -1,0 +1,82 @@
+.tabs a {
+  color: lightslategray;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tabs .active {
+  background-color: rgb(29, 33, 41) !important;
+  border-color: #252A33 !important;
+  color: #fafafa;
+}
+
+.tabs {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 48px;
+  width: 101% !important;
+  margin: 50px !important;
+  white-space: nowrap;
+}
+
+.card_image {
+  width: 200px;
+  height: auto !important;
+}
+
+.tabs .col .s4 {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.collection {
+  border: none !important;
+  margin-right: 106px;
+  margin-left: -10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.collection-item {
+  margin-top: 10px !important;
+  background-color: #252A33 !important;
+  border: none !important;
+}
+
+.post {
+  position: relative !important;
+  margin: 15px 10px 10px 15px !important;
+  border: none !important;
+  background-color: #252A33 !important;
+}
+
+.title {
+  font-weight: bold;
+  color: #64b5f6;
+}
+
+.time {
+  font-size: 14px;
+  color: #666565;
+}
+
+.iconSpan {
+  font-size: 13px !important;
+  line-height: 18px !important;
+  margin-right: 15px !important;
+}
+
+.material-icons {
+  display: inline-flex !important;
+  vertical-align: top !important;
+  cursor: pointer !important;
+  margin-right: 3px !important;
+}
+
+.imgDiv {
+  display: block !important;
+  position: relative !important;
+  text-align: center !important;
+  margin-top: 25px !important;
+  cursor: pointer !important;
+}
