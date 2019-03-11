@@ -43,4 +43,16 @@ export class SignupComponent implements OnInit {
       }
     );
   }
+
+  checkPasswords(password, confirmPassword) {
+    if (confirmPassword.length < 0) {
+      return null;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      return {
+        doesNotMatch: true
+      };
+    }
+  }
 }

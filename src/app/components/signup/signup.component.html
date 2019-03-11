@@ -56,7 +56,7 @@
                 Confirmation is required.
               </span>
             </div>
-            <span class="error" *ngIf="password.value !== passwordConfirm">
+            <span class="error" *ngIf="checkPasswords(password, passwordConfirm)">
               Password and confirmation do not match.
             </span>
           </div>
