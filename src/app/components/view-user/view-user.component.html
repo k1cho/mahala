@@ -48,8 +48,8 @@
               <div class="row">
                 <div class="col s12">
                   <div class="post">
-                    <div class="card-image">
-                      <img class="postImage" src="http://wac.2f9ad.chicdn.net/802F9AD/u/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=26"
+                    <div class="card-image" *ngIf="post.imgId">
+                      <img class="postImage" src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{post.imgVersion}}/{{post.imgId}}"
                         alt="">
                     </div>
                     <div class="card-content">

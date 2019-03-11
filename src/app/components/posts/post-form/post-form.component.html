@@ -12,7 +12,7 @@
           <div class="file-field input-field">
             <div class="btn waves-effect waves-light">
               <i class="material-icons left">image</i>Image
-              <input type="file" name="image" [(ngModel)]="formData.image" #image="ngModel">
+              <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text">
