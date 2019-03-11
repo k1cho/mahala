@@ -92,5 +92,13 @@ export class PeopleListComponent implements OnInit {
 
   viewUser(user) {
     this.router.navigate([user.username]);
+    if (this.loggedUser.username !== user.username) {
+      this.usersService.viewProfileNotification(user._id).subscribe(
+        () => {
+          this.socket.emit('refresh', {});
+        },
+        err => console.log(err)
+      );
+    }
   }
 }

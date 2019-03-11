@@ -45,4 +45,8 @@ export class UsersService {
   setProfilePic(imgId, imgVersion): Observable<any> {
     return this.http.get(baseUrl + '/images/set-profile-image/' + imgId + '/' + imgVersion);
   }
+
+  viewProfileNotification(id): Observable<any> {
+    return this.http.post(baseUrl + '/users/view-profile', { id });
+  }
 }

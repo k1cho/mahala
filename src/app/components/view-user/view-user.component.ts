@@ -42,7 +42,6 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
         this.posts = user.posts;
         this.followers = user.followers;
         this.following = user.following;
-        console.log(user.posts);
       },
       err => console.log(err)
     );

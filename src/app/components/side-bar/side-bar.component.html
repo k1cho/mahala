@@ -2,7 +2,7 @@
   <ul class="collection with-header">
     <li class="collection-header">
       <div class="col s12 m4">
-        <a [routerLink]="['', user?.username]"><span class="bold">Posts</span>
+        <a *ngIf="user" [routerLink]="['/', user?.username]"><span class="bold">Posts</span>
           <p class="active">{{ user?.posts.length }}</p>
         </a>
       </div>
