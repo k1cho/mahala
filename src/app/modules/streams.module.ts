@@ -27,6 +27,7 @@ import { ImageListComponent } from '../components/images/image-list/image-list.c
 import { ImageFormComponent } from '../components/images/image-form/image-form.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { ChangePasswordComponent } from '../components/view-user/change-password/change-password.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -47,7 +48,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     MessageComponent,
     ImageListComponent,
     ImageFormComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

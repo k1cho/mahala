@@ -10,6 +10,7 @@ import { NotificationsListComponent } from '../components/notifications-list/not
 import { ChatComponent } from '../components/chat/chat/chat.component';
 import { ImageListComponent } from '../components/images/image-list/image-list.component';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { ChangePasswordComponent } from '../components/view-user/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
   {
     path: 'notifications',
     component: NotificationsListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
     canActivate: [AuthGuard]
   },
   {
