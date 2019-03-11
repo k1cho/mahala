@@ -39,25 +39,28 @@
           <div class="row" *ngIf="postsTab">
             <ul class="collection col s12 m12 l10 dark" *ngFor="let post of posts">
               <li class="collection-item avatar">
-                <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}"
-                  alt="" class="circle">
-                <span class="post">{{ post.user.username }}</span>
-                <p class="time">{{ post.created }} <br> Country</p>
+                <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{user?.picVersion}}/{{user?.picId}}" alt=""
+                  class="circle">
+                <span class="title">{{ user?.username }}</span>
+                <p class="time">{{ post.createdAt }}
+                </p>
               </li>
               <div class="row">
                 <div class="col s12">
-                  <div>
-                    <div class="card-image card_image">
-                      <img src="http://placehold.it/100x100" alt="" class="postImage">
+                  <div class="post">
+                    <div class="card-image">
+                      <img class="postImage" src="http://wac.2f9ad.chicdn.net/802F9AD/u/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=26"
+                        alt="">
                     </div>
                     <div class="card-content">
                       <p>{{ post.post }}</p>
                     </div>
                     <div class="card-action">
-                      <i class="material-icons">thump_up</i>
-                      <span id="icon-span">{{ post.totalLikes }}</span>
+                      <i class="material-icons">thumb_up</i>
+                      <span class="iconSpan">{{ post.totalLikes }}</span>
+
                       <i class="material-icons">chat</i>
-                      <span id="icon-span">{{ post.comments?.length}}</span>
+                      <span class="iconSpan">{{ post.comments.length }}</span>
                     </div>
                   </div>
                 </div>
@@ -66,7 +69,7 @@
           </div>
 
           <div class="row" *ngIf="followingTab">
-            <div class="col 12 m4 l4 dark" *ngFor="let f of following">
+            <div class="col 12 m4 l4 dark cardDiv" *ngFor="let f of following">
               <div class="card-image imgDiv">
                 <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{f.picVersion}}/{{f.picId}}" alt="" class="imgCircle">
               </div>
@@ -78,7 +81,7 @@
           </div>
 
           <div class="row" *ngIf="followersTab">
-            <div class="col 12 m4 l4 dark" *ngFor="let fl of followers">
+            <div class="col 12 m4 l4 dark cardDiv" *ngFor="let fl of followers">
               <div class="card-image imgDiv">
                 <img src="https://res.cloudinary.com/dj7a0d88z/image/upload/v{{fl.picVersion}}/{{fl.picId}}" alt=""
                   class="imgCircle">

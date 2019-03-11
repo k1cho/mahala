@@ -2,20 +2,17 @@
   <ul class="collection with-header">
     <li class="collection-header">
       <div class="col s12 m4">
-        <a href=""
-          ><span class="bold">Posts</span>
+        <a [routerLink]="['', user?.username]"><span class="bold">Posts</span>
           <p class="active">{{ user?.posts.length }}</p>
         </a>
       </div>
       <div class="col s12 m4" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-        <a [routerLink]="['/following']"
-          ><span class="bold">Following</span>
+        <a [routerLink]="['/following']"><span class="bold">Following</span>
           <p class="active">{{ user?.following.length }}</p>
         </a>
       </div>
       <div class="col s12 m4" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
-        <a [routerLink]="['/followers']"
-          ><span class="bold">Followers</span>
+        <a [routerLink]="['/followers']"><span class="bold">Followers</span>
           <p class="active">{{ user?.followers.length }}</p>
         </a>
       </div>
